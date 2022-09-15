@@ -75,11 +75,15 @@ consultas: pasta que trata os arquivos da aplicação
 É necessário entrar no arquivo settings.py e localizar a constante INSTALLED_APPS.
 A constante INSTALLED_APPS é uma lista que contém todos os APPs associados ao projeto, somente após um APP estar relacionado nesta lista que o Django pode identificar e utilizar o APP nos demais fins
 
-IMPORTANTE: Configurar o TIME_ZONE para que a aplicação seja executado com o horário local. https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Configurar o linguagem da aplicação no LANGUAGE_CODE http://www.i18nguy.com/unicode/language-identifiers.html
+IMPORTANTE: Configurar o TIME_ZONE para que a aplicação seja executado com o horário local.
+ 
+> https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Configurar o linguagem da aplicação no 
+> LANGUAGE_CODE http://www.i18nguy.com/unicode/language-identifiers.html
 
+````
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
-
+````
 
 ## Registrar o APP à aplicação admin
 
