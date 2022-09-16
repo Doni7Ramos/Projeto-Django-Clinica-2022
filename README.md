@@ -76,7 +76,7 @@ consultas: pasta que trata os arquivos da aplicação
 A constante INSTALLED_APPS é uma lista que contém todos os APPs associados ao projeto, somente após um APP estar relacionado nesta lista que o Django pode identificar e utilizar o APP nos demais fins
 
 IMPORTANTE: Configurar o TIME_ZONE para que a aplicação seja executado com o horário local.
- 
+
 > https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Configurar o linguagem da aplicação no 
 > LANGUAGE_CODE http://www.i18nguy.com/unicode/language-identifiers.html
 
@@ -95,3 +95,42 @@ U -> Update (Atualizar)
 D -> Delete (Excluir)
 
 Para registrar a aplicação é necessário localizar o arquivo consultas/admin.py e incluir os comandos de registro do modelo.
+
+### Cadastrar SuperUsuario
+
+Para acessar a tela de admin é necessario que se tenha um usuario devidamente registrado na aplicação
+
+````
+python -m manage createsuperuser
+````
+
+# Migration 
+
+O migration (migrações) é o ato de capturar o modelo de dados desenvolvido em uma camada de aplicação, e preparar os códigos necessários para criar o banco de dados.
+
+> IMPORTANTE: o migrate não está vinculado a nenhum banco de dados específico
+
+````
+python -m makemigrations consultas
+````
+
+- **makemigrations**: é o comando responsável pela preparação do modelo que será implantado no banco de dados
+
+    - Como parâmetro é necessário informar o nome da aplicação
+
+Após a execução deste comando, a pasta migrations é criada dentro da aplicação (Consultas/Migrations).
+
+````
+python -m manage migrate consultas
+````
+
+-**migrate**: é o comando responsável por aplicar a estrutura criada pelo makemigrations
+
+## URLconf
+
+A URLconf é o termo utilizado para fazer tratar os arquivos url.py. Este arquivo está presente no projeto e na aplicação.
+
+O comando startapp não cria o arquivo urls.py na aplicação. É necessário criar o arquivo.
+
+> IMPORTANTE: o arquivo deve conter obrigatoriamente uma variável chamada urlpatterns
+
