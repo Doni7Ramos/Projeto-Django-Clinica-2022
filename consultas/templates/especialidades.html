@@ -7,10 +7,12 @@
     <title>Especialidades</title>
 </head>
 <body>
-    {# A Chave do dicionário (centexto) é utilizada como variável do motor #}
+    <ul>
+        {# A Chave do dicionário (centexto) é utilizada como variável do motor #}
         
-    {% for especialidade in especialidades %}
-    <li>{{ especialidades.nome }}</li>
-    {% endfor %}
+        {% for especialidade in especialidades %}
+        <li>{{ especialidade.nome }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

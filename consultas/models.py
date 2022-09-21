@@ -8,6 +8,8 @@ from django.db import models
 
 # Documentação para selecionar os fields 
 #  https://docs.djangoproject.com/en/4.1/ref/models/fields/
+
+
 class Medico(models.Model):
     # Charfield: este tipo de atributo cria no banco de dados um campo de texto(VARCHAR)
     #  -É obrigatorio a parametrização do maximo de caracteres, para isso utilizamos o max_lenght.
@@ -55,7 +57,6 @@ class Medico(models.Model):
         blank=True
     )
 
-<<<<<<< HEAD
 class Especialidade (models.Model):
     
     # CODIGO
@@ -74,8 +75,6 @@ class Especialidade (models.Model):
         null=True,
         blank=True
     )
-=======
->>>>>>> 5a8024efa53b4b6901137251c9772bea3f5e84f2
 
 # Função padrão de classe para transformar uma classe em texto
     def __str__ (self):
