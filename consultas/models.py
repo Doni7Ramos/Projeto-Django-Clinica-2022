@@ -55,6 +55,7 @@ class Medico(models.Model):
         blank=True
     )
 
+<<<<<<< HEAD
 class Especialidade (models.Model):
     
     # CODIGO
@@ -73,6 +74,8 @@ class Especialidade (models.Model):
         null=True,
         blank=True
     )
+=======
+>>>>>>> 5a8024efa53b4b6901137251c9772bea3f5e84f2
 
 # Função padrão de classe para transformar uma classe em texto
     def __str__ (self):

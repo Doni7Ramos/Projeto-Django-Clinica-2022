@@ -132,5 +132,9 @@ A URLconf é o termo utilizado para fazer tratar os arquivos url.py. Este arquiv
 
 O comando startapp não cria o arquivo urls.py na aplicação. É necessário criar o arquivo.
 
+<<<<<<< HEAD
 > IMPORTANTE: o arquivo deve conter obrigatoriamente uma variável chamada urlpatterns
 
+=======
+> IMPORTANTE: o arquivo deve conter obrigatoriamente uma variável chamada urlpatterns
+>>>>>>> 5a8024efa53b4b6901137251c9772bea3f5e84f2
