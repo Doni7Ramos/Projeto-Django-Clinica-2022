@@ -9,6 +9,26 @@ from django.db import models
 # Documentação para selecionar os fields 
 #  https://docs.djangoproject.com/en/4.1/ref/models/fields/
 
+class Especialidade (models.Model):
+    # Foi definido que o código da especialidade poderá ser somente números inteiros positivos, para isso foi utilizado o PositiveIntegerField.
+
+    # CODIGO
+    # AutoField (primary_key=True)
+    codigo = models.PositiveIntegerField ()
+
+    # NOME
+    nome = models.CharField (
+        max_length=255
+    )
+
+    # DESCRIÇÃO
+    descricao = models.CharField (
+        max_length=1000,
+        null=True,
+        blank=True
+    )
+    def __str__ (self):
+        return self.nome
 
 class Medico(models.Model):
     # Charfield: este tipo de atributo cria no banco de dados um campo de texto(VARCHAR)
@@ -57,24 +77,13 @@ class Medico(models.Model):
         blank=True
     )
 
-class Especialidade (models.Model):
-    
-    # CODIGO
-    codigo = models.AutoField (primary_key=True)
-
-    # NOME
-    nome = models.CharField (
-        max_length=255,
+    especialidade = models.ForeignKey (
+        Especialidade,
+        on_delete=models.PROTECT,
         null=True,
         blank=True
-    )
+    ) 
 
-    # DESCRIÇÃO
-    descricao = models.CharField (
-        max_length=255,
-        null=True,
-        blank=True
-    )
 
 # Função padrão de classe para transformar uma classe em texto
     def __str__ (self):
