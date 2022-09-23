@@ -77,6 +77,7 @@ class Medico(models.Model):
         blank=True
     )
 
+    # Dentro dos tipos disponibilizados pelo ModelFields (é possível localizar o tipo ForeignKey (chave estrangeira)), sendo assim o próprio Django se responsabiliza em estruturar o modelo de dados
     especialidade = models.ForeignKey (
         Especialidade,
         on_delete=models.PROTECT,

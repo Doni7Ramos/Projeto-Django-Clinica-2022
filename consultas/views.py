@@ -3,8 +3,10 @@
 
 from django.shortcuts import render
 
+from django.http import HttpResponse
+
 from .models import Medico
-from .models import Especialidade
+
 
 # Por definição as funções de visualização precisam obrigatoriamente ter um parâmetro de request
 
@@ -24,11 +26,18 @@ def medicos (request):
 
     return render(request, 'medicos.html', contexto)
 
-def especialidades (request):
+# Função desenvolvida para fornecer os detalhes do medico, para isso foi necessário que fosse declarado o parâmetro medico_id para receber a informação vinda da URL
 
-    especialidades = Especialidade.objects.all()
+def medico_detalhes (request, medico_id):
 
-    contexto = {'especialidades': especialidades}
+    # Para todos os modelos é possível utilizar o método get que tem a função de fazer uma consulta no banco de dados e retornar somente um item
 
-    return render (request, 'especialidades.html', contexto)
+    # pk é um parâmetro possível que faz referência à pimary key (chave primária) definida no modelo
+
+    medico = Medico.objects.get(pk=medico_id)
+
+    contexto = { 'medico': medico }
+
+    return render(request, 'medico_detalhes.html', contexto)
+
     
