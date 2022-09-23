@@ -95,10 +95,7 @@ class Medico(models.Model):
 class Procedimento (models.Model):
     
     # Código
-    codigo = models.PositiveIntegerField (
-        null=True,
-        blank=True
-    )
+    codigo = models.PositiveIntegerField ()
 
     # Nome
     nome = models.CharField (
