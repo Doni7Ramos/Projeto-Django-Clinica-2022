@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedimentos</title>
+</head>
+<body>
+    <h2>Procedimentos</h2>
+    <ul>
+        {% for procedimento in procedimentos %}
+        <li><a href="{% url 'procedimento_detalhes' codigo=procedimento.codigo %}">{{ procedimento.nome }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

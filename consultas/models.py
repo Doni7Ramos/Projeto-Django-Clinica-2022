@@ -30,6 +30,8 @@ class Especialidade (models.Model):
     def __str__ (self):
         return self.nome
 
+
+
 class Medico(models.Model):
     # Charfield: este tipo de atributo cria no banco de dados um campo de texto(VARCHAR)
     #  -É obrigatorio a parametrização do maximo de caracteres, para isso utilizamos o max_lenght.
@@ -87,5 +89,28 @@ class Medico(models.Model):
 
 
 # Função padrão de classe para transformar uma classe em texto
+    def __str__ (self):
+        return self.nome
+    
+class Procedimento (models.Model):
+    
+    # Código
+    codigo = models.PositiveIntegerField (
+        null=True,
+        blank=True
+    )
+
+    # Nome
+    nome = models.CharField (
+        max_length=255,
+        null=True,
+        blank=True
+    )
+
+    # Descrição
+    descricao = models.CharField (
+        max_length=1000
+    )
+
     def __str__ (self):
         return self.nome

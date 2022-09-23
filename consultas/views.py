@@ -3,9 +3,9 @@
 
 from django.shortcuts import render
 
-from django.http import HttpResponse
+##from django.http import HttpResponse
 
-from .models import Medico
+from .models import Medico, Procedimento
 
 
 # Por definição as funções de visualização precisam obrigatoriamente ter um parâmetro de request
@@ -39,5 +39,23 @@ def medico_detalhes (request, medico_id):
     contexto = { 'medico': medico }
 
     return render(request, 'medico_detalhes.html', contexto)
+
+def procedimentos(request):
+
+    procedimentos = Procedimento.objects.all()
+
+    contexto = {'procedimentos' : procedimentos }
+
+    return render (request, 'procedimentos.html', contexto)
+
+def procedimentos_detalhes (request, codigo):
+
+    procedimento = Procedimento.objects.get(pk=codigo)
+
+    contexto = { 'procedimento' : procedimento}
+
+    return render (request, 'procedimento_detalhes.html', contexto)
+
+
 
     
