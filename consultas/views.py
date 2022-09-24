@@ -3,7 +3,9 @@
 
 from django.shortcuts import render
 
-##from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+
+from django.urls import reverse
 
 from .models import Medico, Procedimento
 
@@ -40,6 +42,18 @@ def medico_detalhes (request, medico_id):
 
     return render(request, 'medico_detalhes.html', contexto)
 
+def medico_cadastro (request):
+
+    if request.POST:
+
+        medico = Medico(nome=request.POST['nome'])
+        
+        medico.save()
+
+        return HttpResponseRedirect (reverse('medicos'))
+
+    return render(request, 'medico_cadastro.html')
+
 def procedimentos(request):
 
     procedimentos = Procedimento.objects.all()
@@ -55,6 +69,7 @@ def procedimentos_detalhes (request, codigo):
     contexto = { 'procedimento' : procedimento}
 
     return render (request, 'procedimento_detalhes.html', contexto)
+
 
 
 

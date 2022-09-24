@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Médico</title>
+</head>
+<body>
+    <h1>Cadastro Médico</h1>
+
+
+    <!-- A tag form é responsável por definir o início e as condições do formulário. -->
+
+    <form method="post">
+
+        <!-- O comando csrf_token é responsável por aplicar uma camada de segurança aos formulários. O nome desta técnica é Cross site Request Forgery protection, que garante que somente as requisições originadas pelo servidor sejam aceitas como um retorno de formulário.-->
+
+        {% csrf_token %}
+
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome">
+        
+        <!-- A tag input com o atributo type como submit, executa o envio do formulário para o servidor -->
+
+        <input type="submit" value="Salvar">
+    </form>
+</body>
+</html>
