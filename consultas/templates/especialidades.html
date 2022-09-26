@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <h3>Especialidades:</h3>
+    <ul>
+        {% for especialidade in especialidades %}
+        <li><a href="{% url 'especialidade_detalhes' codigo=especialidade.codigo %}">{{ especialidade.nome }}</a></li>
+        <br>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'especialidade_cadastro' %}">Cadastrar Especialidade</a>
+    <span>|</span>
+    <a href="{% url 'index' %}">Voltar</a>
+{% endblock %}

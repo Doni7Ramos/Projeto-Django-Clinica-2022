@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+    <h3>Menu:</h3>
+
+     <table>
+        <ul>
+            <li>
+                <a href="{% url 'especialidades' %}">Lista de Especialidades</a>
+            </li>
+            <br>
+            <li>
+                <a href="{% url 'medicos' %}">Lista de Médicos</a>
+            </li>
+            <br>
+            <li>
+                <a href="{% url 'procedimentos' %}">Lista de Procedimentos</a>
+            </li>
+            <br>
+            <li>
+                <a href="{% url 'consultas' %}">Lista de Consultas</a>
+            </li>
+        </ul>
+    </table>    
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+    <h3>Consultas:</h3>
+    
+    <ul>
+        {# A Chave do dicionário (centexto) é utilizada como variável do motor #}
+        
+        {% for consulta in consultas %}
+        <li><a href="{% url 'consulta_detalhes' codigo=consulta.codigo %}">Código {{ consulta.codigo  }} - {{ consulta.data }}</a></li>
+        <br>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'consulta_cadastro' %}">Cadastrar Consulta</a>
+    <span>|</span>
+    <a href="{% url 'index' %}">Voltar</a>
+{% endblock %}

@@ -13,8 +13,8 @@ class Especialidade (models.Model):
     # Foi definido que o código da especialidade poderá ser somente números inteiros positivos, para isso foi utilizado o PositiveIntegerField.
 
     # CODIGO
-    # AutoField (primary_key=True)
-    codigo = models.PositiveIntegerField ()
+    codigo = models.AutoField (primary_key=True)
+    
 
     # NOME
     nome = models.CharField (
@@ -30,16 +30,23 @@ class Especialidade (models.Model):
     def __str__ (self):
         return self.nome
 
-
-
 class Medico(models.Model):
     # Charfield: este tipo de atributo cria no banco de dados um campo de texto(VARCHAR)
     #  -É obrigatorio a parametrização do maximo de caracteres, para isso utilizamos o max_lenght.
+
+    #Codigo
+    codigo = models.AutoField(primary_key=True)
 
     #Nome
     nome = models.CharField(
         max_length=255
         )
+
+    # EmailField: é o tipo que representa a estrutura de um e-mail.
+    # Para o banco de dados é simplesmente um texto e para a interface é um componente com validação de e-mail.
+    #E-MAIL
+    email = models.EmailField(
+    )
 
     # Por padrão não são aceitas informações nulas, para que não seja obrigatório o uso de determinado atributo é utilizado o parâmetro null para que no banco de dados seja um NOT NULL e blank para permitir informações em branco na interface
 
@@ -71,10 +78,9 @@ class Medico(models.Model):
         blank=True
     )
 
-    # EmailField: é o tipo que representa a estrutura de um e-mail.
-    # Para o banco de dados é simplesmente um texto e para a interface é um componente com validação de e-mail.
-    #E-MAIL
-    email = models.EmailField(
+    #UF
+    uf = models.CharField(
+        max_length=2,
         null=True,
         blank=True
     )
@@ -82,9 +88,7 @@ class Medico(models.Model):
     # Dentro dos tipos disponibilizados pelo ModelFields (é possível localizar o tipo ForeignKey (chave estrangeira)), sendo assim o próprio Django se responsabiliza em estruturar o modelo de dados
     especialidade = models.ForeignKey (
         Especialidade,
-        on_delete=models.PROTECT,
-        null=True,
-        blank=True
+        on_delete=models.PROTECT
     ) 
 
 
@@ -95,7 +99,7 @@ class Medico(models.Model):
 class Procedimento (models.Model):
     
     # Código
-    codigo = models.PositiveIntegerField ()
+    codigo = models.AutoField (primary_key=True)
 
     # Nome
     nome = models.CharField (
@@ -111,3 +115,38 @@ class Procedimento (models.Model):
 
     def __str__ (self):
         return self.nome
+
+class Consulta (models.Model):
+
+    #CODIGO
+    codigo = models.AutoField(primary_key=True)
+
+    #DATA
+
+    data = models.DateField()
+
+    #MEDICO
+
+    medico = models.ForeignKey(
+        Medico,
+        on_delete=models.PROTECT
+    )
+
+    #LAUDO
+
+    laudo = models.CharField(
+        max_length=1000,
+        null=True,
+        blank=True
+    )
+
+    #PROCEDIMENTO
+
+    procedimento = models.ManyToManyField (
+        Procedimento,
+        blank=True
+    )
+
+    def __str__ (self):
+
+        return f'Consulta {self.codigo} - {self.data}'

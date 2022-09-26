@@ -1,29 +1,56 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Médico</title>
-</head>
-<body>
-    <h1>Cadastro Médico</h1>
+{% extends "base.html" %}
 
-
-    <!-- A tag form é responsável por definir o início e as condições do formulário. -->
-
+{% block conteudo %}
+    <h3>Cadastro Médico:</h3>
+    
     <form method="post">
-
-        <!-- O comando csrf_token é responsável por aplicar uma camada de segurança aos formulários. O nome desta técnica é Cross site Request Forgery protection, que garante que somente as requisições originadas pelo servidor sejam aceitas como um retorno de formulário.-->
 
         {% csrf_token %}
 
         <label for="nome">Nome:</label>
-        <input type="text" name="nome" id="nome">
+        <input type="text" name="nome" id="nome" required>
+
+        <br>
         
+        <label for="txt_email">E-mail:</label>
+        <input type="email" name="txt_email" id="txt_email" required>
+
+        <br>
+
+        <label for="txt_cpf">CPF:</label>
+        <input type="text" name="txt_cpf" id="txt_cpf">
+        
+        <br>
+
+        <label for="txt_crm">CRM:</label>
+        <input type="text" name="txt_crm" id="txt_crm">
+
+        <br>
+
+        <label for="txt_data">Data de Nascimento:</label>
+        <input type="date" name="txt_data" id="txt_data">
+
+        <br>
+
+        <label for="txt_cidade">Cidade:</label>
+        <input type="text" name="txt_cidade" id="txt_cidade">
+
+        <br>
+
+        <label for="txt_uf">UF:</label>
+        <input type="text" name="txt_uf" id="txt_uf" maxlength="2">
+
+        <br>
+
+        <label for="especialidade">Especialidades</label>
+        <select name="especialidade" id="especialidade" required><option value="" selected disabled>Escolha uma especialidade</option>
+        {% for especialidade in especialidades %}
+        <option value="{{especialidade.codigo}}">{{ especialidade.nome }}</option>
+        {% endfor %}
+        </select>
         <!-- A tag input com o atributo type como submit, executa o envio do formulário para o servidor -->
 
         <input type="submit" value="Salvar">
     </form>
-</body>
-</html>
+    <a href="{% url 'medicos' %}">Voltar</a>
+{% endblock %}

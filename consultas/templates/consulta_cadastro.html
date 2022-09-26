@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <h3>Cadastro de Consultas:</h3>
+
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="data">Data da Consulta:</label>
+        <input type="date" id="data" name="data" required>
+
+        <br>
+
+        <label for="medico">Médico:</label>
+        <select name="medico" id="medico" required>
+            <option value="" selected disabled>Escolha um Médico</option>
+
+            {% for medico in medicos %}
+            <option value="{{ medico.codigo }}">{{ medico.nome }}</option>
+            {% endfor %}
+        </select>
+
+        <br>
+
+        <label for="laudo">Laudo:</label>
+        <br>
+        <textarea name="laudo" id="laudo" cols="30" rows="10"></textarea>
+
+        <br>
+
+        <label for="procedimentos">Procedimentos:</label>
+
+        <br>
+        
+        {% for procedimento in procedimentos %}
+        <input type="checkbox" name="procedimentos" id="{{ procedimento.codigo }}" value="{{ procedimento.codigo }}">
+        <label for="{{ procedimento.codigo }}">{{ procedimento.codigo }} - {{ procedimento.nome }}</label>
+        <span>|</span>
+        {% endfor %}
+
+        <br>
+
+        <input type="submit" value="Salvar">
+
+    </form>
+    <br>
+    <a href="{% url 'consultas' %}">Voltar</a>
+{% endblock %}

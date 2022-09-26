@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 
 {% block conteudo %}
-    <h3>Detalhes de Procedimento:</h3>
+    <h3>Detalhes de Especialidade:</h3>
 
     <table>
         <tr>
             <th>Nome:</th>
-            <td>{{ procedimento.nome }}</td>
+            <td>{{ especialidade.nome }}</td>
         </tr>
         <tr>
             <th>Descrição:</th>
-            <td>{{ procedimento.descricao }}</td>
+            <td>{{ especialidade.descricao }}</td>
         </tr>
     </table>
-    <a href="{% url 'procedimentos' %}">Voltar</a>
+    <br>
+    <a href="{% url 'especialidades' %}">Voltar</a>
 {% endblock %}

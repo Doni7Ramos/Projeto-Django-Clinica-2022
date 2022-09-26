@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes</title>
-</head>
-<body>
-    <h2> Detalhes do Médico</h2>
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <h3> Detalhes do Médico:</h3>
 
     <table>
         <tr>
             <th>Nome</th>
             <td>{{ medico.nome }}</td>
+        </tr>
+        <tr>
+            <th>E-mail</th>
+            <td>{{ medico.email }}</td>
         </tr>
         <tr>
             <th>CPF</th>
@@ -31,13 +29,14 @@
             <td>{{ medico.cidade }}</td>
         </tr>
         <tr>
-            <th>E-mail</th>
-            <td>{{ medico.email }}</td>
+            <th>UF</th>
+            <td>{{ medico.uf }}</td>
         </tr>
         <tr>
             <th>Especialidade</th>
             <td>{{ medico.especialidade.nome }}</td>
         </tr>
     </table>
-</body>
-</html>
+    <br>
+    <a href="{% url 'medicos' %}">Voltar</a>
+{% endblock %}

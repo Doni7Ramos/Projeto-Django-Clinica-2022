@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicos</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+    <h3>Médicos:</h3>
+
+    <br>
+
     <ul>
         {# A Chave do dicionário (centexto) é utilizada como variável do motor #}
         
         {% for medico in medicos %}
-        <li><a href="{% url 'medico_detalhes' medico_id=medico.id %}">{{ medico.nome }}</a></li>
+        <li><a href="{% url 'medico_detalhes' codigo=medico.codigo %}">{{ medico.nome }}</a></li>
+        <br>
         {% endfor %}
     </ul>
-</body>
-</html>
+    <a href="{% url 'medico_cadastro' %}">Cadastrar Médico</a>
+    <span>|</span>
+    <a href="{% url 'index' %}">Voltar</a>
+{% endblock %}

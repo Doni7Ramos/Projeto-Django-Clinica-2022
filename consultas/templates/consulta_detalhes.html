@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <h3>Detalhes da Consulta:</h3>
+
+    <table>
+        <tr>
+            <th>Data:</th>
+            <td>{{ consulta.data }}</td>
+        </tr>
+        <tr>
+            <th>Descrição:</th>
+            <td>{{ consulta.medico }}</td>
+        </tr>
+        <tr>
+            <th>Laudo:</th>
+            <td>{{ consulta.laudo }}</td>
+        </tr>
+        <tr>
+            <th>Procedimento:</th>
+            <td>{% for procedimento in procedimentos %}
+                <br>
+                <span> | </span>
+                {{ procedimento.nome }}
+                <span> | </span>
+                <br>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+    <br>
+    <a href="{% url 'consultas' %}">Voltar</a>
+{% endblock %}
